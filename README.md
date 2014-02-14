@@ -1,0 +1,1 @@
+I'm trying to learn me some Javascript. This is a little combo filter / search input with some keyboard controls. You can see what it looks like here: http://jsfiddle.net/virginiam/RewLm/ – it's super-basic, and the autocomplete is just for show at the moment.
