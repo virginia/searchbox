@@ -1,0 +1,52 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.form {
+  position: relative;
+  margin: 20px;
+  border: 1px solid #eee;
+  width: 318px;
+}
+
+.form input {
+  border: none;
+  outline: none;
+  font-size: 16px;
+  font-family: "Helvetica", sans-serif;
+}
+
+.filter {
+  font-size: 16px;
+  font-family: "Helvetica", sans-serif;
+  padding: 10px 20px;
+  display: inline-block;
+  background: #eee;
+  cursor: pointer;
+}
+.filter:focus {
+  background: #aaa;
+  outline: none;
+}
+.filterList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  line-height: 130%;
+  display: none;
+  position: absolute;
+  top: 46px;
+  left: 0;
+  width: 280px;
+  padding: 10px 20px;
+  background: #eee;
+}
+
+.filterList li {
+  list-style: none;
+}
+
+.filterList .selected {
+  font-weight: bold;
+}
