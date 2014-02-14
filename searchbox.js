@@ -1,50 +1,50 @@
+/* jshint indent:2 */
+/* jshint unused:false */
+/* global FastClick, unveil, google, setupTypeahead */
+
+'use strict';
+
 (function(){
 
   var init = function () {
     setupFilter();
   };
 
+
+
+
   var setupFilter = function() {
 
     // This would come from elsewhere
     var filterOptions = [
-      "All",
-      "Ebooks",
-      "Audiobooks",
-      "Movies",
-      "Libraries",
-      "Crime",
-      "Romance"
+      'All',
+      'Ebooks',
+      'Audiobooks',
+      'Movies',
+      'Libraries',
+      'Crime',
+      'Romance'
     ];
 
     var filter = $('#filter');
     var filterLabel = $('#filterLabel');
     var filterList = $('#filterList');
-    var filterOpts = "";
+    var filterOpts = '';
     var filterListIsOpen = false;
 
     $.each(filterOptions, function() {
-      filterOpts += "<li>" + this + "</li>";
+      filterOpts += '<li>' + this + '</li>';
     });
 
     filterList.html(filterOpts);
-    filterList.find(":first").addClass('selected');
+    filterList.find(':first').addClass('selected');
+    filterOpts = filterList.find('li');
 
 
     var activateFilter = function() {
-      if (!$('.selected')) {
-        $('#filter :first').addClass('.selected');
-      }
-      if (filterListIsOpen) {
-        filterList.css({'display': 'none'});
-        filterListIsOpen = false;
-      } else {
-        filterList.css({'display': 'block'});
-        filterListIsOpen = true;
-      }
+      filterList.css({'display': 'block'});
+      filterListIsOpen = true;
     };
-
-    filterOpts = filterList.find("li");
 
     var deactivateFilter = function() {
       filterListIsOpen = false;
@@ -69,7 +69,7 @@
 
       var selectedItem = $('.selected');
       var next;
-      var previous;
+      var prev;
 
       // handle if last / first
       if(e.which === 40) {
@@ -86,11 +86,13 @@
 
       if(e.which === 13 || e.which === 27) {
         deactivateFilter();
+        filter.blur();
       }
     });
 
-    filter.on('focus', function() { activateFilter(); });
-    filter.on('click', function() { activateFilter(); });
+    filter.on('focus', function() { activateFilter(); console.log('focusing'); });
+    filter.on('blur', function() { deactivateFilter(); console.log('blurring');});
+
 
   };
 
