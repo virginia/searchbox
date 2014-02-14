@@ -8,10 +8,9 @@
 
   var init = function () {
     setupFilter();
+    setupAutocomplete();
+    focusForm();
   };
-
-
-
 
   var setupFilter = function() {
 
@@ -64,7 +63,6 @@
       });
     });
 
-
     $(filter).on('keydown', function(e){
 
       var selectedItem = $('.selected');
@@ -85,15 +83,34 @@
 
       if(e.which === 13 || e.which === 27) {
         deactivateFilter();
-        filter.blur();
+        // filter.blur();
       }
     });
 
-    filter.on('focus', function() { activateFilter(); console.log('focusing'); });
-    filter.on('blur', function() { deactivateFilter(); console.log('blurring');});
-
+    filter.on('focus', function() { activateFilter(); });
+    filter.on('blur', function() { deactivateFilter(); });
 
   };
+
+  var setupAutocomplete = function() {
+    $('input').on('focus', function() {
+      $('#autocompleteList').css({ 'display': 'block' });
+    });
+
+    $('input').on('blur', function() {
+      $('#autocompleteList').css({ 'display': 'none' });
+    });
+  }
+
+  var focusForm = function() {
+    $('.form').children().on('focus', function() {
+      $('.form').addClass('focused');
+    });
+
+    $('.form').children().on('blur', function() {
+      $('.form').removeClass('focused');
+    })
+  }
 
   init();
 
