@@ -65,13 +65,12 @@
     });
 
 
-    $(window).on('keydown', function(e){
+    $(filter).on('keydown', function(e){
 
       var selectedItem = $('.selected');
       var next;
       var prev;
 
-      // handle if last / first
       if(e.which === 40) {
         next = selectedItem.next();
         if (next.length > 0) {
